@@ -1,0 +1,194 @@
+
+Deploying application with Docker:
+
+What will you learn in this Section:
+
+	- What is Docker?
+	- Virtual Machines vs. Containers
+	- Architecture of Docker
+	- Installing Docker
+	- Development Workflow
+	
+-----------------------------------------------
+
+-- To check whether docker is installed or not:
+
+	docker --version
+	
+-- To check whether docker is running or not:
+
+	docker version
+	
+-----------------------------------------------
+
+What is Docker?
+
+	- Container Management Service.
+	- This helps in Develop, Ship and Run the applications anywhere.
+	
+Note: A kernel manage applications and hardware resource.
+	Every OS has its kernel or engine.
+	On Linux, we can only run Linux Containers.
+	On Windows, we can run windows and Linux Containers both.
+	On Mac, it has its own kernel, which is different from Linux or Windows Kernel.
+	Mac Kernel doesn't has native support for Containers.
+	
+Virtual Machine vs. Containers
+
+	Container is an isolated environment for running the application.
+	Whereas, VM is an abstraction of another machine. (Physical Hardware_
+
+Case Study:
+
+	Java Application (Java JDK 8 and Angular 11.2.8)
+	Java Application (Java JDK 11 and Angular 12.1.0)
+
+Hypervisors:
+
+	Virtual Box
+	VMWare
+	Hyper-V (Windows Only)
+	
+Problesm with Virtual Machines:
+
+	- Each VM needs on full-blown OS.
+	- Slow to Start
+	- Resource Intensive
+
+Containers:
+
+	- Allow running multiple apps in isolation.
+	- Are lightweight.
+	- Uses OS of the Host.
+	- Needs less hardware resources.
+	
+INstruction to Deploy Sample Application:
+
+	1. Start with an OS
+	2. Install NodeJS
+	3. Copy the application files
+	4. Run: node app.js
+	
+--------------------------------------------------------
+
+How to dockerize an application:
+
+1. To create image of an application:
+
+	E:\Simplilearn-PhaseFive-Projects\sample-app> docker build -t sample-app .
+	
+2. To see the list of images:
+
+	docker images
+
+3. To run docker image:
+
+	docker run sample-app
+
+---------------------------------------------------------
+
+How to deploy an image on Docker Hub:
+
+1. Signup to Docker Hub:
+
+	https://hub.docker.com/
+	
+	username: madhugunwani
+	email: gunwani.madhu@gmail.com
+	password: ********************
+	
+2. Login with Docker Desktop or Docker Command Prompt:
+
+	docker login --username=madhugunwani
+	
+3. Verify the docker image:
+
+	docker images
+	
+4. Create Public Repository into your docker hub account:
+
+5. Tag your image before pushing to the repository:
+
+	docker tag e48edf8c1d2f madhugunwani/sample-app:SampleApp
+
+6. Push your image to the repository you created:
+
+	docker image push madhugunwani/sample-app:SampleApp
+
+---------------------------------------------------------
+
+How to test your github image or repository over Docker Playground:
+
+1. Login to Docker Playground:
+
+	https://labs.play-with-docker.com/
+	
+2. Create New Linux Instance:
+
+3. Pull Docker Image:
+
+	docker pull madhugunwani/sample-app:SampleApp
+
+4. Verify pulled images on Docker Playground:
+
+	docker images
+	
+5. Run the image:
+
+	docker run madhugunwani/sample-app:SampleApp
+	
+---------------------------------------------------------
+
+How to pull linux image and work with it:
+
+1. To pull image
+
+	docker pull ubuntu (Just pull the image)
+	
+	docker run ubuntu (Pull and then run the image)
+	
+2. To see the list of running processes:
+
+	docker ps
+	
+3. To see the list of running or stopped processes:
+
+	docker ps -a
+
+4. To run docker image i.e. unbuntu
+
+	docker run ubuntu
+	
+5. To run docker image in interactive mode i.e. ubuntu
+
+	docker run -it ubuntu
+
+	root@eb1a8774033f:/#
+	
+	root - currently logged-in username
+	eb1a8774033f - name of the machine generated for the current user.
+	/# - The current directory under logged-in user.
+
+6. Use Linux package manager to install some packages:
+
+-- To see installed packages locally:
+
+	root@58d5ebed1808:/# apt list
+	
+-- To update the list of locally installed packages:
+
+	root@58d5ebed1808:/# apt update
+	
+-- To see installed packages locally:
+
+	root@58d5ebed1808:/# apt list
+
+-- To see installed packages locally:
+
+	root@58d5ebed1808:/# apt install python
+	root@58d5ebed1808:/# python
+	
+-- To remove packages locally:
+
+	root@58d5ebed1808:/# apt remove python-is-python2
+	
