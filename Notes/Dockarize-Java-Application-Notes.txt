@@ -1,0 +1,72 @@
+
+Containarizing a java application for Production using Docker:
+
+---------------------------------------------------------------
+
+1. Create a directory:
+
+	E:\Simplilearn-PhaseFive-Projects\java-docker-app> 
+	
+---------------------------------------
+	
+2. Create a Java file i.e. Hello.java
+	
+	class Hello {
+		public static void main(String[] args) {
+			System.out.println("Hello World");
+		}
+	}
+
+---------------------------------------
+	
+3. Create a Dockerfile with below content:
+
+	FROM java:8
+	COPY . /var/www/java
+	WORKDIR /var/www/java
+	RUN javac Hello.java
+	CMD ["java", "Hello"]
+	
+---------------------------------------
+
+4. Build Docker Image:
+
+	E:\Simplilearn-PhaseFive-Projects\java-docker-app>
+	
+	docker build -t java-app .
+	
+---------------------------------------
+
+5. Verify Docker Image:
+
+	docker images
+
+---------------------------------------
+
+6. Run Docker Image:
+
+	docker run java-app
+	
+---------------------------------------
+
+7. Tag your dockarized Image:
+
+	docker tag e33b83070564 madhugunwani/java-app:JavaApp
+	
+---------------------------------------
+
+8. Push Docker Image to Docker Hub
+
+	docker image push madhugunwani/java-app:JavaApp
+	
+---------------------------------------
+
+9. Pull Docker Image from Docker Hub
+
+	docker pull madhugunwani/java-app:JavaApp
+	
+---------------------------------------
+	
+10. Run Pulled Docker Image
+	
+	docker run madhugunwani/java-app:JavaApp

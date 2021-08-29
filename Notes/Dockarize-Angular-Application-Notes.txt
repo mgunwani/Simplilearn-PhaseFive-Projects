@@ -1,0 +1,107 @@
+
+Containarizing an angular application for Production using Docker:
+
+-------------------------------------------------------------------
+
+-- To check whether docker is installed or not:
+
+	docker --version
+	
+-- To check whether docker is running or not:
+
+	docker version
+	
+-------------------------------------------------------------------
+
+-- To check if angular-cli is installed or not:
+
+	ng --version
+
+-- To generate angular new project:
+
+	ng new angular-demo-project
+	cd angular-demo-project
+	ng serve
+-------------------------------------------------------------------
+
+Create Dockerfile with below content:
+
+
+-------------------------------------------------------------------
+
+Create .dockerignore with below content:
+
+-------------------------------------------------------------------
+
+Build Docker Image:
+
+	docker build -t docker-demo-project .
+
+Verify the docker image in the list of images:
+
+	docker images
+
+Run docker image repository:
+
+	docker run -p 3000:80 docker-demo-project
+
+Stop running processes/container:
+
+	docker kill --signal=SIGTERM <containerid>
+	docker kill --signal=SIGTERM 7d8d97a2c3a7
+
+--------------------------------------------------------------------
+
+-- To see list of running processes/containers:
+
+	docker ps
+	
+-- To see list of running or stopped processes/containers:
+
+	docker ps -a
+
+--------------------------------------------------------------------
+
+-- Tag your local repository for Docker Hub:
+
+	docker tag f35b671f9cfd madhugunwani/docker-demo-project:DockerDemoProject
+
+-- Push Tagged Image to Docker Hub Repository:
+
+	docker image push madhugunwani/docker-demo-project:DockerDemoProject
+
+-----------------------------------------------------------------------
+
+-- Pull Docker Image from Docker Hub:
+
+	docker pull madhugunwani/docker-demo-project:DockerDemoProject
+	
+-- Run Pulled Image:	
+
+	docker run -p 3000:80 madhugunwani/docker-demo-project:DockerDemoProject
+
+-----------------------------------------------------------------------
+
+Update:
+
+	docker ps -a 
+	
+	docker stop 7d8d97a2c3a7
+	
+	docker rm 7d8d97a2c3a7
+	
+	docker build -t docker-demo-project .
+	
+	docker run -p 3000:80 docker-demo-project
+	
+	docker tag 108f255b7303 madhugunwani/docker-demo-project:DockerDemoProjectSecond
+	
+	docker image push madhugunwani/docker-demo-project:DockerDemoProjectSecond
+	
+	docker pull madhugunwani/docker-demo-project:DockerDemoProjectSecond
+	
+	docker pull madhugunwani/docker-demo-project:DockerDemoProjectSecond
+	
+------------------------------------------------------------------------
+
+
